@@ -67,19 +67,22 @@ object oblea {
 }
 
 object chocolatin {
-    var peso = 30
-    const pesoInicial = 30
-
+    var pesoInicial = 0
+    var gramosPerdidos = 0
+    
+    method asignarPesoInicial(peso) {
+        pesoInicial = peso
+    }
     method precio() = 0.5 * pesoInicial
     method sabor() = chocolate
-    method peso() = peso
+    method peso() = pesoInicial - gramosPerdidos
     method contieneGluten() = true
     method recibeMordisco(){
-        peso = peso - 2
+        gramosPerdidos = gramosPerdidos + 2
     }
 }
 
-object golosinaBañada {
+object golosinaBaniada {
     var golosinaBase = oblea
     var pesoBaniado = 4
 
@@ -104,8 +107,11 @@ object pastillaTuttiFrutti {
     var gluten = true
     var sabor = frutilla
 
-    method cambiarGluten() {
-        gluten = !gluten
+    method noEsLibreDeGluten() {
+        gluten = true
+    }
+    method esLibreDeGluten() {
+        gluten = false
     }
     method precio() {
         if (gluten) {
@@ -129,8 +135,6 @@ object chocolate {
     method cambioDeSabor() = naranja
 }
 object naranja {
-    method cambioDeSabor() = vainilla
-}
-object vainilla {
     method cambioDeSabor() = frutilla
 }
+object vainilla {}
