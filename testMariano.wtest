@@ -1,0 +1,29 @@
+import mariano.*
+import golosinas.*
+
+describe "Test parte 2" {
+
+    test "Compra de golosinas y consultas" {
+        mariano.comprar(chocolatin)
+        mariano.comprar(caramelo)
+        mariano.comprar(bombon)
+
+        assert.equals(3, mariano.cantidadDeGolosinas())
+        assert.that(mariano.tieneLaGolosina(bombon))
+        assert.that(mariano.hayGolosinaSinTACC())
+        assert.that(mariano.preciosCuidados())
+        assert.equals(caramelo, mariano.golosinaDeSabor(frutilla))
+        assert.equals([caramelo, bombon], mariano.golosinasDeSabor(frutilla))
+        assert.equals(#{chocolate, frutilla}, mariano.sabores())
+        assert.equals(bombon, mariano.golosinaMasCara())
+        assert.equals(20, mariano.pesoGolosinas())
+        assert.equals(#{alfajor, chupetin}, mariano.golosinasFaltantes(#{alfajor, bombon, chocolatin, chupetin}))
+        assert.equals(#{"melón", "vainilla", "chocolate", "frutilla"}, mariano.gustosFaltantes(#{"melón", "chocolate", "frutilla" , "vainilla"}))
+        
+        mariano.probarGolosinas()
+
+        assert.equals(0, chocolatin.peso())
+        assert.equals(4, caramelo.peso())
+        assert.equals(11, bombon.peso())
+    }
+}

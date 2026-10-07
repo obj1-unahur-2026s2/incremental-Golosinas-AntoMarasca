@@ -55,7 +55,7 @@ object oblea {
 
     method precio() = 5
     method sabor() = vainilla
-    method peso() = peso
+    method peso() = peso.max(0)
     method contieneGluten() = true
     method recibeMordisco(){
         if (peso > 70) {
@@ -75,7 +75,7 @@ object chocolatin {
     }
     method precio() = 0.5 * pesoInicial
     method sabor() = chocolate
-    method peso() = pesoInicial - gramosPerdidos
+    method peso() = (pesoInicial - gramosPerdidos).max(0)
     method contieneGluten() = true
     method recibeMordisco(){
         gramosPerdidos = gramosPerdidos + 2
